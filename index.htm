@@ -104,6 +104,35 @@ h1{
 
 .sub{color:var(--muted); margin:0}
 
+/* ✅ COUNTDOWN */
+.countdown{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.cdItem{
+  background:rgba(0,0,0,.28);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:14px;
+  padding:10px 8px;
+  text-align:center;
+}
+.cdItem b{
+  display:block;
+  font-family:"Cormorant Garamond",serif;
+  font-size:24px;
+  line-height:1.1;
+}
+.cdItem span{
+  display:block;
+  margin-top:4px;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
 .metaRow{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -133,9 +162,10 @@ h1{
   gap:10px;
   margin-top:14px;
 }
+
+/* ✅ Fix "Open in Google Maps" alignment & spacing */
 .btn{
-  display: block;              /* fixes alignment */
-  margin-top: 16px;            /* space from text above */
+  display:block;
   padding:14px;
   border-radius:16px;
   border:1px solid rgba(255,255,255,.15);
@@ -143,7 +173,7 @@ h1{
   color:var(--text);
   font-size:14px;
   width:100%;
-  text-align: center;          /* centers text properly */
+  text-align:center;
 }
 
 /* SECTIONS */
@@ -207,16 +237,17 @@ footer{
     padding:8px 8px;
     margin-left:6px;
   }
-    .brand{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 1.2;
-  }
 
+  /* ✅ Put date under "Levon & Ani" on mobile */
+  .brand{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    line-height:1.2;
+  }
   .brand span{
-    margin-top: 2px;
-    font-size: 11px;
+    margin-top:2px;
+    font-size:11px;
   }
 
   .heroCard{
@@ -232,6 +263,11 @@ footer{
 
   .heroContent{
     margin-top: auto;
+  }
+
+  /* ✅ Countdown becomes 2x2 grid on small screens */
+  .countdown{
+    grid-template-columns:repeat(2,1fr);
   }
 
   h1{font-size:44px}
@@ -262,6 +298,14 @@ footer{
     <div class="kicker">Wedding Invitation</div>
     <h1>Levon & Ani</h1>
     <p class="sub">We’re getting married in Venice and would be honored to celebrate this day with you.</p>
+
+    <!-- ✅ COUNTDOWN -->
+    <div class="countdown" aria-label="Countdown to wedding">
+      <div class="cdItem"><b id="cdDays">--</b><span>Days</span></div>
+      <div class="cdItem"><b id="cdHours">--</b><span>Hours</span></div>
+      <div class="cdItem"><b id="cdMins">--</b><span>Minutes</span></div>
+      <div class="cdItem"><b id="cdSecs">--</b><span>Seconds</span></div>
+    </div>
   </div>
 
   <div class="metaRow">
@@ -276,7 +320,6 @@ footer{
   </div>
 
   <div class="btnRow">
-    <!-- View venues button removed -->
     <button class="btn" id="addCalBtn" type="button">Add to Calendar</button>
     <button class="btn" type="button" onclick="toggleMusic()">🎵 Music</button>
   </div>
@@ -335,7 +378,7 @@ footer{
 </main>
 
 <!-- AUDIO -->
-<audio id="bg-music" loop preload="auto">
+<audio id="bg-music" loop preload="none">
   <source src="bocelli.mp3" type="audio/mpeg">
 </audio>
 
@@ -371,6 +414,37 @@ footer{
     else music.pause();
   }
 
+  // ✅ COUNTDOWN (Venice time) — June 9, 2026 14:00
+  const WEDDING_TZ = "Europe/Rome";
+  const WEDDING_TARGET_ISO = "2026-06-09T14:00:00";
+
+  function updateCountdown(){
+    const now = new Date();
+
+    // Convert current time to Venice time via locale string (simple + reliable enough for this use)
+    const nowInRome = new Date(now.toLocaleString("en-US", { timeZone: WEDDING_TZ }));
+
+    // Interpret target in Venice time (matches your ceremony time)
+    const targetInRome = new Date(new Date(WEDDING_TARGET_ISO).toLocaleString("en-US", { timeZone: WEDDING_TZ }));
+
+    let diffMs = targetInRome.getTime() - nowInRome.getTime();
+    if (diffMs < 0) diffMs = 0;
+
+    const totalSec = Math.floor(diffMs / 1000);
+    const days = Math.floor(totalSec / 86400);
+    const hours = Math.floor((totalSec % 86400) / 3600);
+    const mins = Math.floor((totalSec % 3600) / 60);
+    const secs = totalSec % 60;
+
+    document.getElementById("cdDays").textContent = String(days);
+    document.getElementById("cdHours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("cdMins").textContent = String(mins).padStart(2, "0");
+    document.getElementById("cdSecs").textContent = String(secs).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
   // CALENDAR (.ics download)
   document.getElementById("addCalBtn").addEventListener("click", () => {
     const ics =
@@ -401,5 +475,4 @@ END:VCALENDAR`;
 </script>
 
 </body>
-
 </html>
