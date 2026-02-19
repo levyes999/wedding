@@ -265,10 +265,23 @@ footer{
     margin-top: auto;
   }
 
-  /* ✅ Countdown becomes 2x2 grid on small screens */
   .countdown{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
   }
+  .cdItem{
+    padding:8px 6px;
+    border-radius:12px;
+  }
+
+  .cdItem b{
+    font-size:18px;
+  }
+
+  .cdItem span{
+    font-size:10px;
+    letter-spacing:.14em;
+  } 
 
   h1{font-size:44px}
   .metaRow{grid-template-columns:1fr}
@@ -476,3 +489,4 @@ END:VCALENDAR`;
 
 </body>
 </html>
+
