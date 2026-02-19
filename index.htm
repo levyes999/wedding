@@ -56,7 +56,7 @@ header{
 .links{
   display:flex;
   align-items:center;
-  white-space:nowrap; /* prevent wrapping */
+  white-space:nowrap;
 }
 .links a{
   margin-left:10px;
@@ -104,7 +104,7 @@ h1{
 
 .sub{color:var(--muted); margin:0}
 
-/* ✅ COUNTDOWN */
+/* COUNTDOWN */
 .countdown{
   margin-top:12px;
   display:grid;
@@ -133,29 +133,6 @@ h1{
   color:var(--muted);
 }
 
-.metaRow{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:12px;
-}
-.meta{
-  background:rgba(0,0,0,.3);
-  border-radius:14px;
-  padding:12px;
-}
-.meta b{
-  display:block;
-  font-size:11px;
-  letter-spacing:.2em;
-  color:var(--muted);
-}
-.meta p{
-  margin:0;
-  font-family:"Cormorant Garamond",serif;
-  font-size:20px;
-}
-
 .btnRow{
   display:flex;
   flex-direction:column;
@@ -163,7 +140,7 @@ h1{
   margin-top:14px;
 }
 
-/* ✅ Fix "Open in Google Maps" alignment & spacing */
+/* buttons */
 .btn{
   display:block;
   padding:14px;
@@ -174,6 +151,138 @@ h1{
   font-size:14px;
   width:100%;
   text-align:center;
+}
+
+/* ✅ NEW: CALENDAR + DETAILS SECTION (outside hero image) */
+.detailsRow{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:16px;
+}
+
+.detailsCard{
+  padding:18px;
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.detailsHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:12px;
+  margin-bottom:10px;
+}
+.detailsHeader h2{
+  margin:0;
+  font-family:"Cormorant Garamond",serif;
+  font-size:26px;
+}
+.detailsHeader .loc{
+  font-size:13px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+.detailsMeta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:10px;
+}
+.metaPill{
+  background:rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:14px;
+  padding:12px;
+}
+.metaPill b{
+  display:block;
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.metaPill p{
+  margin:0;
+  font-family:"Cormorant Garamond",serif;
+  font-size:20px;
+}
+
+/* Calendar widget */
+.calendarCard{
+  padding:18px;
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  overflow:hidden;
+}
+.calTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.calMonth{
+  font-family:"Cormorant Garamond",serif;
+  font-size:24px;
+  margin:0;
+}
+.calYear{
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.calGrid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
+}
+.calDow{
+  font-size:10px;
+  color:var(--muted);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  text-align:center;
+  padding:6px 0 2px;
+}
+.calDay{
+  text-align:center;
+  padding:10px 0;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.18);
+  font-size:13px;
+  color:rgba(242,240,234,.9);
+}
+.calDay.muted{
+  opacity:.35;
+}
+.calDay.highlight{
+  position:relative;
+  border:1px solid rgba(215,180,106,.55);
+  background:radial-gradient(120px 80px at 50% 40%, rgba(215,180,106,.32), rgba(0,0,0,.18));
+  box-shadow:0 10px 30px rgba(215,180,106,.18);
+  font-weight:600;
+}
+.calDay.highlight::after{
+  content:"Wedding";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-10px;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--gold);
+  background:rgba(7,7,10,.92);
+  border:1px solid rgba(215,180,106,.35);
+  padding:4px 8px;
+  border-radius:999px;
+  white-space:nowrap;
 }
 
 /* SECTIONS */
@@ -230,7 +339,7 @@ footer{
   font-size:13px;
 }
 
-/* extra small phones: keep nav neat */
+/* extra small phones */
 @media (max-width: 480px){
   .links a{
     font-size:12px;
@@ -238,7 +347,7 @@ footer{
     margin-left:6px;
   }
 
-  /* ✅ Put date under "Levon & Ani" on mobile */
+  /* Put date under brand */
   .brand{
     display:flex;
     flex-direction:column;
@@ -253,8 +362,6 @@ footer{
   .heroCard{
     padding-top: 240px;
     padding-bottom: 18px;
-
-    /* ✅ SHOW MORE OF THE PHOTO (no crop) */
     min-height: 110vh;
     background:
       linear-gradient(180deg,rgba(7,7,10,.25),rgba(7,7,10,.9)),
@@ -262,7 +369,7 @@ footer{
   }
 
   .heroContent{
-    margin-top: auto;
+    margin-top:auto;
   }
 
   .countdown{
@@ -273,18 +380,21 @@ footer{
     padding:8px 6px;
     border-radius:12px;
   }
-
-  .cdItem b{
-    font-size:18px;
-  }
-
+  .cdItem b{ font-size:18px; }
   .cdItem span{
     font-size:10px;
     letter-spacing:.14em;
-  } 
+  }
 
   h1{font-size:44px}
-  .metaRow{grid-template-columns:1fr}
+
+  /* ✅ Stack calendar under details on mobile */
+  .detailsRow{
+    grid-template-columns:1fr;
+  }
+
+  /* prevent cal badge clipping */
+  .calendarCard{ padding-bottom:26px; }
 }
 </style>
 </head>
@@ -312,29 +422,106 @@ footer{
     <h1>Levon & Ani</h1>
     <p class="sub">We’re getting married in Venice and would be honored to celebrate this day with you.</p>
 
-    <!-- ✅ COUNTDOWN -->
+    <!-- COUNTDOWN -->
     <div class="countdown" aria-label="Countdown to wedding">
       <div class="cdItem"><b id="cdDays">--</b><span>Days</span></div>
       <div class="cdItem"><b id="cdHours">--</b><span>Hours</span></div>
       <div class="cdItem"><b id="cdMins">--</b><span>Minutes</span></div>
       <div class="cdItem"><b id="cdSecs">--</b><span>Seconds</span></div>
     </div>
-  </div>
 
-  <div class="metaRow">
-    <div class="meta">
-      <b>Date</b>
-      <p>June 9, 2026</p>
-    </div>
-    <div class="meta">
-      <b>City</b>
-      <p>Venice, Italy</p>
+    <div class="btnRow">
+      <button class="btn" id="addCalBtn" type="button">Add to Calendar</button>
+      <button class="btn" type="button" onclick="toggleMusic()">🎵 Music</button>
     </div>
   </div>
+</section>
 
-  <div class="btnRow">
-    <button class="btn" id="addCalBtn" type="button">Add to Calendar</button>
-    <button class="btn" type="button" onclick="toggleMusic()">🎵 Music</button>
+<!-- ✅ NEW: Date/City moved OUT of hero + pretty calendar -->
+<section class="detailsRow" aria-label="Wedding date and calendar">
+  <div class="detailsCard">
+    <div class="detailsHeader">
+      <h2 style="margin:0;">Details</h2>
+      <div class="loc">Venice, Italy</div>
+    </div>
+
+    <div class="detailsMeta">
+      <div class="metaPill">
+        <b>Date</b>
+        <p>June 9, 2026</p>
+      </div>
+      <div class="metaPill">
+        <b>Day</b>
+        <p>Tuesday</p>
+      </div>
+    </div>
+
+    <div class="detailsMeta">
+      <div class="metaPill">
+        <b>Ceremony</b>
+        <p>14:00</p>
+      </div>
+      <div class="metaPill">
+        <b>Dinner</b>
+        <p>18:00</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="calendarCard" aria-label="June 2026 calendar">
+    <div class="calTop">
+      <div>
+        <p class="calMonth">June</p>
+        <div class="calYear">2026</div>
+      </div>
+    </div>
+
+    <!-- Weekday row -->
+    <div class="calGrid" aria-hidden="true">
+      <div class="calDow">Mon</div><div class="calDow">Tue</div><div class="calDow">Wed</div>
+      <div class="calDow">Thu</div><div class="calDow">Fri</div><div class="calDow">Sat</div><div class="calDow">Sun</div>
+
+      <!-- June 2026 starts on Monday. Days 1..30 -->
+      <div class="calDay">1</div>
+      <div class="calDay">2</div>
+      <div class="calDay">3</div>
+      <div class="calDay">4</div>
+      <div class="calDay">5</div>
+      <div class="calDay">6</div>
+      <div class="calDay">7</div>
+
+      <div class="calDay">8</div>
+      <div class="calDay highlight">9</div>
+      <div class="calDay">10</div>
+      <div class="calDay">11</div>
+      <div class="calDay">12</div>
+      <div class="calDay">13</div>
+      <div class="calDay">14</div>
+
+      <div class="calDay">15</div>
+      <div class="calDay">16</div>
+      <div class="calDay">17</div>
+      <div class="calDay">18</div>
+      <div class="calDay">19</div>
+      <div class="calDay">20</div>
+      <div class="calDay">21</div>
+
+      <div class="calDay">22</div>
+      <div class="calDay">23</div>
+      <div class="calDay">24</div>
+      <div class="calDay">25</div>
+      <div class="calDay">26</div>
+      <div class="calDay">27</div>
+      <div class="calDay">28</div>
+
+      <div class="calDay">29</div>
+      <div class="calDay">30</div>
+      <div class="calDay muted"> </div>
+      <div class="calDay muted"> </div>
+      <div class="calDay muted"> </div>
+      <div class="calDay muted"> </div>
+      <div class="calDay muted"> </div>
+    </div>
   </div>
 </section>
 
@@ -427,17 +614,14 @@ footer{
     else music.pause();
   }
 
-  // ✅ COUNTDOWN (Venice time) — June 9, 2026 14:00
+  // COUNTDOWN (Venice time) — June 9, 2026 14:00
   const WEDDING_TZ = "Europe/Rome";
   const WEDDING_TARGET_ISO = "2026-06-09T14:00:00";
 
   function updateCountdown(){
     const now = new Date();
 
-    // Convert current time to Venice time via locale string (simple + reliable enough for this use)
     const nowInRome = new Date(now.toLocaleString("en-US", { timeZone: WEDDING_TZ }));
-
-    // Interpret target in Venice time (matches your ceremony time)
     const targetInRome = new Date(new Date(WEDDING_TARGET_ISO).toLocaleString("en-US", { timeZone: WEDDING_TZ }));
 
     let diffMs = targetInRome.getTime() - nowInRome.getTime();
@@ -489,4 +673,3 @@ END:VCALENDAR`;
 
 </body>
 </html>
-
