@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Levon & Ani — Wedding Invitation</title>
+<meta name="description" content="Levon & Ani — Wedding in Venice on June 9, 2026." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --text:#f2f0ea;
+  --muted:rgba(242,240,234,.72);
+  --gold:#d7b46a;
+  --radius:20px;
+  --shadow:0 18px 60px rgba(0,0,0,.55);
+  --max:980px;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#07070a;
+  color:var(--text);
+  font-family:Inter,system-ui,sans-serif;
+}
+
+a{text-decoration:none;color:inherit}
+.wrap{max-width:var(--max);margin:auto;padding:18px 14px 56px}
+
+header{
+  position:sticky;top:0;z-index:10;
+  backdrop-filter:blur(10px);
+  background:rgba(7,7,10,.85);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav{
+  max-width:var(--max);
+  margin:auto;
+  padding:12px 14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.brand b{
+  font-family:"Cormorant Garamond",serif;
+  font-size:18px;
+}
+.brand span{font-size:12px;color:var(--muted)}
+
+/* nav links */
+.links{
+  display:flex;
+  align-items:center;
+  white-space:nowrap; /* prevent wrapping */
+}
+.links a{
+  margin-left:10px;
+  font-size:13px;
+  padding:8px 10px;
+  border-radius:12px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+/* HERO */
+.heroCard{
+  min-height:92vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:120px 16px 24px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  background:
+    linear-gradient(180deg,rgba(7,7,10,.25),rgba(7,7,10,.9)),
+    url("hero.jpeg") center 10% / cover no-repeat;
+}
+
+.heroContent{
+  background:rgba(0,0,0,.18);
+  border:1px solid rgba(255,255,255,.1);
+  backdrop-filter:blur(8px);
+  border-radius:18px;
+  padding:12px 14px;
+}
+
+.kicker{
+  font-size:12px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+h1{
+  margin:8px 0;
+  font-family:"Cormorant Garamond",serif;
+  font-size:48px;
+}
+
+.sub{color:var(--muted); margin:0}
+
+.metaRow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:12px;
+}
+.meta{
+  background:rgba(0,0,0,.3);
+  border-radius:14px;
+  padding:12px;
+}
+.meta b{
+  display:block;
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--muted);
+}
+.meta p{
+  margin:0;
+  font-family:"Cormorant Garamond",serif;
+  font-size:20px;
+}
+
+.btnRow{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:14px;
+}
+.btn{
+  display: block;              /* fixes alignment */
+  margin-top: 16px;            /* space from text above */
+  padding:14px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  font-size:14px;
+  width:100%;
+  text-align: center;          /* centers text properly */
+}
+
+/* SECTIONS */
+.section{margin-top:42px}
+h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:28px;
+  margin:0 0 6px;
+}
+.hint{font-size:13px;color:var(--muted); margin:0 0 14px}
+
+.grid{
+  display:grid;
+  gap:16px;
+}
+.card{
+  padding:18px;
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.05);
+}
+
+.tag{
+  font-size:12px;
+  letter-spacing:.2em;
+  color:var(--gold);
+  margin-bottom:10px;
+}
+
+/* DRESS CODE */
+.palette{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  max-width:220px;
+  margin:14px auto 0;
+}
+.swatch{
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  margin:auto;
+  border:1px solid rgba(255,255,255,.10);
+}
+.c-beige{background:#d8ccb9}
+.c-taupe{background:#b7a999}
+.c-brown{background:#4a2f22}
+.c-black{background:#000}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  margin-top:40px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* extra small phones: keep nav neat */
+@media (max-width: 480px){
+  .links a{
+    font-size:12px;
+    padding:8px 8px;
+    margin-left:6px;
+  }
+    .brand{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+  }
+
+  .brand span{
+    margin-top: 2px;
+    font-size: 11px;
+  }
+
+  .heroCard{
+    padding-top: 240px;
+    padding-bottom: 18px;
+
+    /* ✅ SHOW MORE OF THE PHOTO (no crop) */
+    min-height: 110vh;
+    background:
+      linear-gradient(180deg,rgba(7,7,10,.25),rgba(7,7,10,.9)),
+      url("hero.jpeg") center top / contain no-repeat;
+  }
+
+  .heroContent{
+    margin-top: auto;
+  }
+
+  h1{font-size:44px}
+  .metaRow{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <b>Levon & Ani</b>
+      <span>Venice · June 9, 2026</span>
+    </div>
+    <nav class="links" aria-label="Page sections">
+      <a href="#venues">Venues</a>
+      <a href="#dresscode">Dress Code</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="heroCard" id="details">
+  <div class="heroContent">
+    <div class="kicker">Wedding Invitation</div>
+    <h1>Levon & Ani</h1>
+    <p class="sub">We’re getting married in Venice and would be honored to celebrate this day with you.</p>
+  </div>
+
+  <div class="metaRow">
+    <div class="meta">
+      <b>Date</b>
+      <p>June 9, 2026</p>
+    </div>
+    <div class="meta">
+      <b>City</b>
+      <p>Venice, Italy</p>
+    </div>
+  </div>
+
+  <div class="btnRow">
+    <!-- View venues button removed -->
+    <button class="btn" id="addCalBtn" type="button">Add to Calendar</button>
+    <button class="btn" type="button" onclick="toggleMusic()">🎵 Music</button>
+  </div>
+</section>
+
+<section class="section" id="venues">
+  <h2>Venues</h2>
+  <p class="hint">Ceremony & Dinner</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="tag">CEREMONY · 14:00</div>
+      <h3 style="margin:0 0 8px; font-family:'Cormorant Garamond',serif;">San Lazzaro degli Armeni Church</h3>
+      <p style="margin:0 0 14px; color:var(--muted);">Island of San Lazzaro, Venice</p>
+      <a class="btn" target="_blank" rel="noopener"
+        href="https://www.google.com/maps/search/?api=1&query=San+Lazzaro+degli+Armeni+Venice">
+        Open in Google Maps
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="tag">DINNER · 18:00</div>
+      <h3 style="margin:0 0 8px; font-family:'Cormorant Garamond',serif;">Hotel Monaco & Grand Canal</h3>
+      <p style="margin:0 0 14px; color:var(--muted);">Venice, Italy</p>
+      <a class="btn" target="_blank" rel="noopener"
+        href="https://www.google.com/maps/search/?api=1&query=Hotel+Monaco+%26+Grand+Canal+Venice">
+        Open in Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="dresscode">
+  <h2>Dress Code</h2>
+  <p class="hint">Elegant attire in neutral tones</p>
+
+  <div class="card">
+    <p style="margin:0; color:var(--muted); line-height:1.7;">
+      Please join us in refined, timeless colors.
+    </p>
+
+    <div class="palette" aria-label="Dress code colors">
+      <div class="swatch c-beige" title="Beige"></div>
+      <div class="swatch c-taupe" title="Taupe"></div>
+      <div class="swatch c-brown" title="Brown"></div>
+      <div class="swatch c-black" title="Black"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  We can’t wait to celebrate with you.<br>
+  Levon & Ani · Venice · June 9, 2026
+</footer>
+
+</main>
+
+<!-- AUDIO -->
+<audio id="bg-music" loop preload="auto">
+  <source src="bocelli.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // MUSIC (mobile-safe: starts on first interaction, fades in softly)
+  const music = document.getElementById("bg-music");
+  let started = false;
+
+  function fadeIn(){
+    music.volume = 0;
+    music.play().catch(()=>{});
+    let v = 0;
+    const f = setInterval(() => {
+      v += 0.02;
+      music.volume = Math.min(v, 0.35);
+      if (v >= 0.35) clearInterval(f);
+    }, 120);
+  }
+
+  function startOnce(){
+    if (!started){
+      fadeIn();
+      started = true;
+      document.removeEventListener("click", startOnce);
+      document.removeEventListener("touchstart", startOnce);
+    }
+  }
+  document.addEventListener("click", startOnce);
+  document.addEventListener("touchstart", startOnce);
+
+  function toggleMusic(){
+    if (music.paused) music.play();
+    else music.pause();
+  }
+
+  // CALENDAR (.ics download)
+  document.getElementById("addCalBtn").addEventListener("click", () => {
+    const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Levon & Ani//Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:Levon & Ani — Wedding (Venice)
+DTSTART;VALUE=DATE:20260609
+DTEND;VALUE=DATE:20260610
+DESCRIPTION:Ceremony 14:00 · Dinner 18:00
+LOCATION:Venice, Italy
+END:VEVENT
+END:VCALENDAR`;
+
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Levon-Ani-Wedding.ics";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+</script>
+
+</body>
+</html>
